@@ -16,6 +16,10 @@ function ajax(url, input_data, gubun, method) {
 }
 
 $(document).ready(function() {
+	var nav1 = getNav1();
+	var nav2 = getNav2();
+	$('#sidenav-main').append(nav1);
+	$('#navbar-main').append(nav2);
 });
 
 function callApi() {
