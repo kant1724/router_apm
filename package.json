@@ -1,0 +1,28 @@
+{
+  "name": "router_apm",
+  "version": "0.1.0",
+  "description": "router_apm",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified! Configure in package.json\" && exit 1"
+  },
+  "repository": "",
+  "keywords": [
+    "node.js"
+  ],
+  "author": "",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.8",
+    "express": "^4.16.3",
+    "fs-extra": "^6.0.0",
+    "mysql": "^2.15.0",
+    "sync-mysql": "^3.0.1",
+    "tedious": "^2.3.1"
+  },
+  "devDependencies": {
+    "ws": "3.3.2"
+  }
+}
