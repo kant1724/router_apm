@@ -10,7 +10,7 @@ function ajax(url, input_data, gubun, method) {
         error: function (jqXhr, textStatus, errorMessage) {
         	if(jqXhr.status==404) {
         		alert(textStatus);
-            }
+          }
         }
     });
 }
@@ -18,7 +18,7 @@ function ajax(url, input_data, gubun, method) {
 $(document).ready(function() {
 	$('#sidenav-main').append(getNav1());
 	$('#navbar-main').append(getNav2());
-	
+
 });
 
 function callApi() {
