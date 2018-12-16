@@ -7,8 +7,8 @@ module.exports = function(app) {
 		res.render('views/templates/main.html');
 	});
 
-	app.get('/table', function(req, res) {
-		res.render('views/templates/table.html');
+	app.get('/log-list', function(req, res) {
+		res.render('views/templates/log-list.html');
 	});
 
 	app.post('/select', urlencodedParser, function(req, res) {

@@ -16,9 +16,7 @@ function ajax(url, input_data, gubun, method) {
 }
 
 $(document).ready(function() {
-	$('#sidenav-main').append(getNav1());
-	$('#navbar-main').append(getNav2());
-	
+	$('#sidenav-main').append(getNav1());	
 });
 
 function callApi() {
