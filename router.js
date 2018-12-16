@@ -11,9 +11,9 @@ module.exports = function(app) {
 		res.render('views/templates/log-list.html');
 	});
 
-	app.post('/select', urlencodedParser, function(req, res) {
-		var ret = require('/server/main').select(
-			function callback(board_num) {
+	app.post('/selectLogList', urlencodedParser, function(req, res) {
+		var ret = require('./server/log-list').connect(
+			function callback() {
 				res.status(200).send({res: JSON.stringify(ret)});
 			}
 		);

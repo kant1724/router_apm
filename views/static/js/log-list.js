@@ -16,9 +16,10 @@ function ajax(url, input_data, gubun, method) {
 }
 
 $(document).ready(function() {
-	$('#sidenav-main').append(getNav1());	
+	$('#sidenav-main').append(getNav1());
+	selectLogList();
 });
 
-function callApi() {
-	ajax('/', {"" : ""}, '', 'POST');
+function selectLogList() {
+	ajax('/selectLogList', {"" : ""}, 'selectLogList', 'POST');
 }
