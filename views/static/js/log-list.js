@@ -15,8 +15,7 @@ function ajax(url, input_data, gubun, method) {
     });
 }
 
-$(document).ready(function() {
-	$('#sidenav-main').append(getNav1());
+$(document).ready(function() {	
 	selectLogList();
 });
 

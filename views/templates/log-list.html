@@ -4,100 +4,111 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
-  <meta name="author" content="Creative Tim">
-  <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
-  <!-- Favicon -->
-  <link href="/views/static/lib/argon-dashboard/assets/img/brand/favicon.png" rel="icon" type="image/png">
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-  <!-- Icons -->
-  <link href="/views/static/lib/argon-dashboard/assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
-  <link href="/views/static/lib/argon-dashboard/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
-  <!-- Argon CSS -->
-  <link type="text/css" href="/views/static/lib/argon-dashboard/assets/css/argon.css?v=1.0.0" rel="stylesheet">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Material Design Bootstrap</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/views/static/lib/mdb/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/views/static/lib/mdb/css/mdb.min.css">
+  <link rel="stylesheet" href="/views/static/css/log-list.css">
 </head>
 
 <body>
-  <!-- Sidenav -->
-  <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
+  <div class="table-responsive">
+      <!--Table-->
+      <table class="table table-hover mb-0">
 
-  </nav>
-  <!-- Main content -->
-  <div class="main-content">
-    <!-- Top navbar -->
-    <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+          <!--Table head-->
+          <thead>
+              <tr>
+                  <th>
+                      <input class="form-check-input" type="checkbox" id="checkbox">
+                      <label for="checkbox" class="form-check-label mr-2 label-table"></label>
+                  </th>
+                  <th class="th-lg"><a>First Name <i class="fa fa-sort ml-1"></i></a></th>
+                  <th class="th-lg"><a href="">Last Name<i class="fa fa-sort ml-1"></i></a></th>
+                  <th class="th-lg"><a href="">Username<i class="fa fa-sort ml-1"></i></a></th>
+                  <th class="th-lg"><a href="">Email<i class="fa fa-sort ml-1"></i></a></th>
+                  <th class="th-lg"><a href="">Country<i class="fa fa-sort ml-1"></i></a></th>
+                  <th class="th-lg"><a href="">City<i class="fa fa-sort ml-1"></i></a></th>
+              </tr>
+          </thead>
+          <!--Table head-->
 
-    </nav>
-    <!-- Header -->
-    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8"
-    </div>
-    <!-- Page content -->
-    <div class="container-fluid mt--7">
-      <!-- Table -->
-      <div class="row">
-        <div class="col">
-          <div class="card shadow">
-            <div class="card-header border-0">
-              <h3 class="mb-0">로그정보</h3>
-            </div>
-            <div class="table-responsive">
-              <table class="table align-items-center table-flush">
-                <thead class="thead-light">
-                  <tr>
-                    <th scope="col">발생일자</th>
-                    <th scope="col">발생시각</th>
-                    <th scope="col">장비IP</th>
-                    <th scope="col">로그내용</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>a</td>
-                    <td>b</td>
-                    <td>c</td>
-                    <td>d</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="card-footer py-4">
-              <nav aria-label="...">
-                <ul class="pagination justify-content-end mb-0">
-                  <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1">
-                      <i class="fas fa-angle-left"></i>
-                      <span class="sr-only">Previous</span>
-                    </a>
-                  </li>
-                  <li class="page-item active">
-                    <a class="page-link" href="#">1</a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">
-                      <i class="fas fa-angle-right"></i>
-                      <span class="sr-only">Next</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+          <!--Table body-->
+          <tbody>
+              <tr>
+                  <th scope="row">
+                      <input class="form-check-input" type="checkbox" id="checkbox1">
+                      <label for="checkbox1" class="label-table"></label>
+                  </th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                  <td>markotto@gmail.com</td>
+                  <td>USA</td>
+                  <td>San Francisco</td>
+              </tr>
+              <tr>
+                  <th scope="row">
+                      <input class="form-check-input" type="checkbox" id="checkbox2">
+                      <label for="checkbox2" class="label-table"></label>
+                  </th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                  <td>jacobt@gmail.com</td>
+                  <td>France</td>
+                  <td>Paris</td>
+              </tr>
+              <tr>
+                  <th scope="row">
+                      <input class="form-check-input" type="checkbox" id="checkbox3">
+                      <label for="checkbox3" class="label-table"></label>
+                  </th>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                  <td>@twitter</td>
+                  <td>larrybird@gmail.com</td>
+                  <td>Germany</td>
+                  <td>Berlin</td>
+              </tr>
+              <tr>
+                  <th scope="row">
+                      <input class="form-check-input" type="checkbox" id="checkbox4">
+                      <label for="checkbox4" class="label-table"></label>
+                  </th>
+                  <td>Paul</td>
+                  <td>Topolski</td>
+                  <td>@P_Topolski</td>
+                  <td>ptopolski@gmail.com</td>
+                  <td>Poland</td>
+                  <td>Warsaw</td>
+              </tr>
+              <tr>
+                  <th scope="row">
+                      <input class="form-check-input" type="checkbox" id="checkbox5">
+                      <label for="checkbox5" class="label-table"></label>
+                  </th>
+                  <td>Anna</td>
+                  <td>Doe</td>
+                  <td>@andy</td>
+                  <td>annadoe@gmail.com</td>
+                  <td>Spain</td>
+                  <td>Madrid</td>
+              </tr>
+          </tbody>
+          <!--Table body-->
+      </table>
+      <!--Table-->
   </div>
-  <!-- Argon Scripts -->
-  <!-- Core -->
-  <script src="/views/static/lib/argon-dashboard/assets/vendor/jquery/dist/jquery.min.js"></script>
-  <script src="/views/static/lib/argon-dashboard/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Argon JS -->
-  <script src="/views/static/lib/argon-dashboard/assets/js/argon.js?v=1.0.0"></script>
-  <script src="/views/static/js/nav.js"></script>
+
+
+
+  <script src="/views/static/lib/mdb/js/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="/views/static/lib/mdb/js/popper.min.js"></script>
+  <script type="text/javascript" src="/views/static/lib/mdb/js/bootstrap.js"></script>
+  <script type="text/javascript" src="/views/static/lib/mdb/js/mdb.min.js"></script>
+	<script src="/views/static/js/nav.js"></script>
 	<script src="/views/static/js/log-list.js"></script>
 </body>
 
