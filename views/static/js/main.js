@@ -17,6 +17,7 @@ function ajax(url, input_data, gubun, method) {
 
 $(document).ready(function() {
 	$('#sidenav-main').append(getNav1());
+	$(".button-collapse").sideNav();
 });
 
 function callApi() {
