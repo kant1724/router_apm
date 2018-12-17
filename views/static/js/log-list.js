@@ -15,7 +15,10 @@ function ajax(url, input_data, gubun, method) {
     });
 }
 
-$(document).ready(function() {	
+$(document).ready(function() {
+	$('#sidenav-main').append(getNav1());
+	$(".button-collapse").sideNav();
+	
 	selectLogList();
 });
 
