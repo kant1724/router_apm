@@ -7,7 +7,7 @@ function ajax(url, input_data, gubun, method) {
         dataType: 'json',
         success: function (data, status, xhr) {
 					if (gubun == "selectLogList") {
-						selectLogListCallback();
+						selectLogListCallback(data);
 					}
         },
         error: function (jqXhr, textStatus, errorMessage) {
@@ -30,5 +30,18 @@ function selectLogList() {
 }
 
 function selectLogListCallback(data) {
-	
+	var res = data['res'];
+	var d = JSON.parse(res);
+	var html = "";	
+	for (var i = 0; i < d.length; ++i) {
+			if (d[i].ip != null) {
+				html += '<tr>';
+				html += '<td><a>' + d[i].date + '</a></td>';
+				html += '<td><a>' + d[i].time + '</a></td>';
+				html += '<td><a>' + d[i].ip + '</a></td>';
+				html += '<td><a>' + d[i].log + '</a></td>';
+				html += '</tr>';
+			}
+	}
+	$('#log_tbody').append(html);
 }

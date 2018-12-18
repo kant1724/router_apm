@@ -13,7 +13,7 @@ module.exports = function(app) {
 
 	app.post('/selectLogList', urlencodedParser, function(req, res) {
 		var ret = require('./server/log-list').connect(
-			function callback() {
+			function callback(ret) {
 				res.status(200).send({res: JSON.stringify(ret)});
 			}
 		);

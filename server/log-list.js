@@ -9,7 +9,7 @@ module.exports = {
         if (err) throw err;
         console.log(result);
         db.close();
-        callback();
+        callback(result);
       });
     });
   }
