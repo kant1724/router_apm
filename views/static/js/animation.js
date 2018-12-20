@@ -4,14 +4,13 @@ var   canvas = document.querySelector('canvas'),
 patriclesNum = 20,
            w = 700,
            h = 700,
-      colors = ['#f35d4f','#f36849','#c0d988','#6ddaf1','#f1e85b'];
+      colors = ['#f35d4f']//,'#f36849','#c0d988','#6ddaf1','#f1e85b'];
 
 canvas.width = w;
 canvas.height = h;
 canvas.style.left = (window.innerWidth - 500)/2+'px';
 
 if(window.innerHeight>500)
-canvas.style.top = (window.innerHeight - 500)/2+'px';
 var curX = 10;
 var curY = 10;
 function Factory(){
@@ -22,7 +21,7 @@ function Factory(){
   this.vx = Math.round( Math.random() * 3) - 1.5;
   this.vy = Math.round( Math.random() * 3) - 1.5;
   curX += 0;
-  curY += 20;
+  curY += 50;
 }
 
 function draw(){
@@ -30,22 +29,26 @@ function draw(){
   ctx.globalCompositeOperation = 'lighter';
   var temp = particles[0];
   var factor = 1;
+  ctx.arc(w / 2, h / 2, temp.rad*30, 0, Math.PI*2, true);
+  ctx.fill();
   for(var j = 1; j<patriclesNum; j++){
-      var temp2 = particles[j];
-      ctx.linewidth = 0.5;
-      ctx.strokeStyle = temp.rgba;
       ctx.beginPath();
+      var temp2 = particles[j];
+      ctx.arc(temp2.x, temp2.y, temp2.rad*20, 0, Math.PI*2, true);
+      ctx.fillStyle = temp2.rgba;
+      ctx.fill();
+      ctx.closePath();
+  }
+  for (var j = 1; j<patriclesNum; j++){
+  var temp2 = particles[j];
+      ctx.beginPath();
+      ctx.strokeStyle = '#ccc';
+      ctx.linewidth = 0.1;
       ctx.moveTo(w / 2, h / 2);
       ctx.lineTo(temp2.x, temp2.y);
       ctx.stroke();
-      ctx.arc(temp2.x, temp2.y, temp2.rad*10, 0, Math.PI*2, true);
-      ctx.arc(w / 2, h / 2, temp2.rad*10, 0, Math.PI*2, true);
-      ctx.fillStyle = temp2.rgba;
-      ctx.fill();
-
+      ctx.closePath();
   }
-
-    ctx.closePath();
     /**
     temp.x += temp.vx;
     temp.y += temp.vy;
