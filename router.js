@@ -11,6 +11,10 @@ module.exports = function(app) {
 		res.render('views/templates/log-list.html');
 	});
 
+	app.get('/animation', function(req, res) {
+		res.render('views/templates/animation.html');
+	});
+
 	app.post('/selectLogList', urlencodedParser, function(req, res) {
 		var ret = require('./server/log-list').connect(
 			function callback(ret) {
