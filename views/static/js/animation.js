@@ -1,56 +1,50 @@
 var   canvas = document.querySelector('canvas'),
          ctx = canvas.getContext('2d'),
    particles = [],
-patriclesNum = 500,
-           w = 500,
-           h = 500,
+patriclesNum = 20,
+           w = 700,
+           h = 700,
       colors = ['#f35d4f','#f36849','#c0d988','#6ddaf1','#f1e85b'];
 
-canvas.width = 500;
-canvas.height = 500;
+canvas.width = w;
+canvas.height = h;
 canvas.style.left = (window.innerWidth - 500)/2+'px';
 
 if(window.innerHeight>500)
 canvas.style.top = (window.innerHeight - 500)/2+'px';
-
+var curX = 10;
+var curY = 10;
 function Factory(){
-  this.x =  Math.round( Math.random() * w);
-  this.y =  Math.round( Math.random() * h);
-  this.rad = Math.round( Math.random() * 1) + 1;
+  this.x = curX;
+  this.y = curY;
+  this.rad = 1;
   this.rgba = colors[ Math.round( Math.random() * 3) ];
   this.vx = Math.round( Math.random() * 3) - 1.5;
   this.vy = Math.round( Math.random() * 3) - 1.5;
+  curX += 0;
+  curY += 20;
 }
 
 function draw(){
   ctx.clearRect(0, 0, w, h);
   ctx.globalCompositeOperation = 'lighter';
-  for(var i = 0;i < patriclesNum; i++){
-    var temp = particles[i];
-    var factor = 1;
+  var temp = particles[0];
+  var factor = 1;
+  for(var j = 1; j<patriclesNum; j++){
+      var temp2 = particles[j];
+      ctx.linewidth = 0.5;
+      ctx.strokeStyle = temp.rgba;
+      ctx.beginPath();
+      ctx.moveTo(w / 2, h / 2);
+      ctx.lineTo(temp2.x, temp2.y);
+      ctx.stroke();
+      ctx.arc(temp2.x, temp2.y, temp2.rad*10, 0, Math.PI*2, true);
+      ctx.arc(w / 2, h / 2, temp2.rad*10, 0, Math.PI*2, true);
+      ctx.fillStyle = temp2.rgba;
+      ctx.fill();
 
-    for(var j = 0; j<patriclesNum; j++){
+  }
 
-       var temp2 = particles[j];
-       ctx.linewidth = 0.5;
-
-       if(temp.rgba == temp2.rgba && findDistance(temp, temp2)<50){
-          ctx.strokeStyle = temp.rgba;
-          ctx.beginPath();
-          ctx.moveTo(temp.x, temp.y);
-          ctx.lineTo(temp2.x, temp2.y);
-          ctx.stroke();
-          factor++;
-       }
-    }
-
-
-    ctx.fillStyle = temp.rgba;
-    ctx.strokeStyle = temp.rgba;
-
-    ctx.beginPath();
-    ctx.arc(temp.x, temp.y, temp.rad*factor, 0, Math.PI*2, true);
-    ctx.fill();
     ctx.closePath();
     /**
     temp.x += temp.vx;
@@ -61,7 +55,7 @@ function draw(){
     if(temp.y > h)temp.y = 0;
     if(temp.y < 0)temp.y = h;
     **/
-  }
+
 }
 
 function findDistance(p1,p2){
