@@ -1,6 +1,6 @@
 body {
 	margin: 0;
-	background: white;
+	background: #222;
 }
 
 .top-div {
@@ -125,7 +125,7 @@ body {
 }
 
 .clap-image:hover {
-	cursor: pointer;	
+	cursor: pointer;
 }
 
 .each-reply {
@@ -135,14 +135,14 @@ body {
 
 .reply-writer {
 	position: relative;
-	font-weight: 700;	
+	font-weight: 700;
 }
 
 .write-reply {
 	color: #8C8C8C;
 	position: relative;
 	top: 5px;
-	left: 1%;	
+	left: 1%;
 }
 
 .write-reply:hover {
@@ -169,7 +169,7 @@ body {
 }
 
 .search-image:hover {
-	cursor: pointer;	
+	cursor: pointer;
 }
 
 .add-image {
@@ -181,7 +181,7 @@ body {
 }
 
 .add-image:hover {
-	cursor: pointer;	
+	cursor: pointer;
 }
 
 .user-info {
@@ -258,7 +258,7 @@ body {
 	left: 5%;
 	top: 5px;
 	font-size: 0.9em;
-	
+
 }
 
 .reply-text-input {
@@ -267,14 +267,14 @@ body {
 	padding: 8px;
 	display: block;
 	border: 1px solid gray;
-	border-radius: 5px;	
+	border-radius: 5px;
 	background: #F6F6F6;
 	width: 540px;
 }
 
 .reply-text-input:focus {
 	border: 1px solid #353535;
-	outline: none; 
+	outline: none;
 }
 
 .loading-icon {

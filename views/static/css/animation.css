@@ -1,4 +1,10 @@
-*{margin:0;padding:0;}body{background:#222;}
+body {
+  background: #222;
+}
+
+.collapse-icon {
+    color: white;
+}
 
 .status-icon {
   display: inline-block;
