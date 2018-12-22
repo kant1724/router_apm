@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *{margin:0;padding:0;}body{background:#222;}
 
 .status-icon {
@@ -16,4 +17,21 @@
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
+=======
+
+.gradtext {
+    background: #55ffaa;
+    background: -webkit-linear-gradient(left, #55ff55, #55ffff);
+    background:    -moz-linear-gradient(right, #55ff55, #55ffff);
+    background:      -o-linear-gradient(right, #55ff55, #55ffff);
+    background:         linear-gradient(to right, #55ff55, #55ffff);
+    -webkit-background-clip: text;
+            background-clip: text;
+    color: transparent;
+}
+.gradtext2 {
+  background: -webkit-linear-gradient(red, blue);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+>>>>>>> 8c3ab18852a273fd4edb1ffbcb733d1d51c8186b
 }
