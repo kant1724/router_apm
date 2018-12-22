@@ -22,4 +22,12 @@ module.exports = function(app) {
 			}
 		);
 	});
+
+	app.post('/selectLogListAfterSeconds', urlencodedParser, function(req, res) {
+		var ret = require('./server/log-list').selectLogListAfterSeconds(
+			function callback(ret) {
+				res.status(200).send({res: JSON.stringify(ret)});
+			}
+		, seconds = req.body.seconds);
+	});
 }
