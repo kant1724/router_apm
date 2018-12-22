@@ -46,5 +46,11 @@ function selectLogList(date) {
 }
 
 function selectLogListCallback(data) {
-
+	var res = data['res'];
+	var d = JSON.parse(res);
+	if (d[0].log == "ok") {
+		$('#router_1').css('background', 'green');
+	} else {
+		$('#router_1').css('background', 'red');
+	}
 }
