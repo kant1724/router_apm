@@ -2,13 +2,16 @@ body {
   background: #222;
 }
 
+table {
+  border-collapse: separate;
+  border-spacing: 20px 20px;
+}
+
 .collapse-icon {
     color: white;
 }
 
 .status-icon {
-  display: inline-block;
-  margin: auto;
   background: green;
   width: 200px;
   height: 200px;
@@ -19,13 +22,19 @@ body {
   cursor: pointer;
 }
 
+.router-info {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+}
+
 .middle {
   position: absolute;
   top: 50%;
-  width: 100%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .vertical-divide {
@@ -33,4 +42,8 @@ body {
   height: 100%;
   margin-left: 20px;
   margin-right: 20px;
+}
+
+.router_info {
+  position: relative;
 }
