@@ -23,7 +23,6 @@
               <div class="router-info">
                 <div class="error-cnt-title">오류횟수</div>
                 <div class="error-cnt-value">2회</div>
-
               </div>
             </div>
           </td>
@@ -34,6 +33,32 @@
       </table>
     </div>
   </div>
+  <div>
+  <!-- Button trigger modal-->
+
+  <!--Modal: modalRelatedContent-->
+  <div class="modal fade right" id="modalRelatedContent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+      <!--Content-->
+      <div class="modal-content">
+        <!--Header-->
+        <div class="modal-header">
+          <p class="heading">실시간 로그현황</p>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" class="white-text">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="log_list_row" class="row">            
+          </div>
+        </div>
+      </div>
+      <!--/.Content-->
+    </div>
+  </div>
+  <!--Modal: modalRelatedContent-->
+
   <script src="/views/static/lib/mdb/js/jquery-3.3.1.min.js"></script>
   <script type="text/javascript" src="/views/static/lib/mdb/js/popper.min.js"></script>
   <script type="text/javascript" src="/views/static/lib/mdb/js/bootstrap.js"></script>
