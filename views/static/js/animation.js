@@ -56,8 +56,12 @@ function selectLogListCallback(data) {
 	if (d.length == 0) return;
 	if (d[0].log == "ok") {
 		$('#router_1').css('background', 'green');
+		$('#error_router_cnt').text(0);
+		$('#error_occur_rate').text(0);
 	} else {
 		$('#router_1').css('background', 'red');
+		$('#error_router_cnt').text(1);
+		$('#error_occur_rate').text(50);
 	}
 	var obj = $('#log_list_row').children();
 	if (obj.length >= 5) {
