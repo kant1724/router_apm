@@ -9,31 +9,32 @@
   <link rel="stylesheet" href="/views/static/lib/mdb/css/mdb.min.css">
   <link rel="stylesheet" href="/views/static/css/animation.css">
 </head>
-<body>
+<body class="fixed-sn">
   <header>
     <nav id="sidenav-main">
     </nav>
   </header>
-  <div style="width: 100%;">
-    <div class="middle">
-      <table>
-        <tbody>
-          <td>
-            <div id="router_1" class="status-icon text-center">
-              <div class="router-info">
-                <div class="error-cnt-title">오류횟수</div>
-                <div class="error-cnt-value">2회</div>
+  <main>
+    <div>
+      <div style="color: #FFFFFF; font-size: 25px; font-weight: 700;">현재 오류 라우터: 0건</div>
+      <div style="color: #FFFFFF; font-size: 13px; font-weight: 700;">오류 발생률: 0%</div>
+      <div class="middle">
+        <table>
+          <tbody>
+            <td>
+              <div id="router_1" class="status-icon text-center">
+                <div class="router-info">
+                </div>
               </div>
-            </div>
-          </td>
-          <td>
-              <div id="router_2" class="status-icon"></div>
-          </td>
-        </tbody>
-      </table>
+            </td>
+            <td>
+                <div id="router_2" class="status-icon"></div>
+            </td>
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
-  <div>
+  </main>
   <!-- Button trigger modal-->
 
   <!--Modal: modalRelatedContent-->
@@ -50,7 +51,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <div id="log_list_row" class="row">            
+          <div id="log_list_row" class="row">
           </div>
         </div>
       </div>
