@@ -52,6 +52,8 @@ function selectLogList(date) {
 function selectLogListCallback(data) {
 	var res = data['res'];
 	var d = JSON.parse(res);
+	$('#current_time').text(getCurrentTime());
+	if (d.length == 0) return;
 	if (d[0].log == "ok") {
 		$('#router_1').css('background', 'green');
 	} else {
@@ -68,4 +70,9 @@ function selectLogListCallback(data) {
 			html += d[0].log;
 			html += '</div>';
 	$('#log_list_row').append(html);
+}
+
+function getCurrentTime() {
+	var cur = moment().format();
+	return cur.substring(0, 10) + ' ' + cur.substring(11, 19);
 }
