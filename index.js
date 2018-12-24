@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var fs = require('fs');
 var app = express();
 var router = require('./router')(app);
+var ws = require("./server/websocket");
 
 app.set('views', __dirname);
 app.set('view engine', 'ejs');
