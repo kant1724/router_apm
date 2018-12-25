@@ -15,6 +15,14 @@ module.exports = function(app) {
 		res.render('views/templates/animation.html');
 	});
 
+
+	app.post('/soketStart', function(req, res) {
+		var ret = require('./server/log-list').soketStart(
+			function callback(ret) {
+				res.status(200).send({res: JSON.stringify(ret)});
+			});
+	});
+
 	app.post('/selectLogList', urlencodedParser, function(req, res) {
 		var ret = require('./server/log-list').connect(
 			function callback(ret) {

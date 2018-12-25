@@ -1,8 +1,35 @@
+
+
+var socket = io.connect('http://localhost:8011');  //localhost로 연결합니다.
+
+socket.on('news', function (data) {  // 서버에서 news 이벤트가 일어날 때 데이터를 받습니다.
+    console.log(data);
+});
+
+socket.on('inqIntervalRtn', function (data) {
+    //console.log(data);
+	var res = data['res'];
+    if ( res == "" ) {
+        //console.log("하지마");
+    } else {
+        //console.log("해");
+    	selectLogListCallback(data);
+    }
+	fnInqSocket();
+});
+
+function fnInqSocket() { // 1초후 재조회
+	var showAlert = setTimeout(function() {
+		socket.emit('inqIntervalSocket', {});
+	}, 1000);
+}
+
+
 function ajax(url, input_data, gubun, method) {
 	$.ajax(url, {
 		type: method,
         data: input_data,
-        async: false,
+        async: true,
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
         dataType: 'json',
         success: function (data, status, xhr) {
@@ -31,13 +58,19 @@ $(document).ready(function() {
 
 var intervalName;
 function startMonitoring() {
+	ajax('/soketStart', '', 'fnInqSocket', 'POST'); // 리슨포트 on
+	fnInqSocket();
+	/*
 	var date = new Date();
 	intervalName = setInterval(function()
 	{
-		console.log(date);
-		selectLogList(date);
+		//console.log(date);
+		//selectLogList(date);
+		var seconds = date.getSeconds();
+		socket.emit('inqInterval', { "seconds": seconds });
+
 		date = new Date();
-	}, 500);
+	}, 2000);*/
 }
 
 function stopMonitoring() {
