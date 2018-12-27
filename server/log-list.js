@@ -4,7 +4,7 @@ var intervalName;
 var MongoClient = require('mongodb').MongoClient;
 
 
-var io = require('socket.io').listen(8011);  // 80 포트로 소켓을 엽니다
+var io = require('socket.io').listen(8011);
 var gvSocket;
 var gvSavTime;
 var gvIsConnect = false;
@@ -64,7 +64,7 @@ module.exports = {
   				} else {
   					gvSavTime = today + hour + minute + seconds + "";
   					dbo.collection("router_log").find({
-  						$and:[{"date" : today, "hour" : hour}] // , "minute" : minute
+  						$and:[{"date" : today, "hour" : hour}]
   					}).sort({$natural : -1}).limit(1).toArray(function(err, result) {
   					  if (err) throw err;
   						socket.emit('dataFromServer', {res: JSON.stringify(result)});
@@ -72,11 +72,9 @@ module.exports = {
   				}
   			});
       });
-      // On disconnect
       socket.on('disconnect', function() {
       	console.log("disconnect");
       	gvIsConnect = false;
-  	    //if ( db != null ) db.close();
       });
     });
   }

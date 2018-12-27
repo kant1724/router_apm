@@ -18,11 +18,7 @@ function ajax(url, input_data, gubun, method) {
     });
 }
 
-var socket = io.connect('http://14.63.168.58:8011');  //localhost로 연결합니다.
-
-socket.on('news', function (data) {  // 서버에서 news 이벤트가 일어날 때 데이터를 받습니다.
-    console.log(data);
-});
+var socket = io.connect('http://14.63.168.58:8011');
 
 socket.on('dataFromServer', function (data) {
 	var res = data['res'];
@@ -33,12 +29,12 @@ socket.on('dataFromServer', function (data) {
 	startSocketTrns();
 });
 
-function startSocketTrns() { // 1초후 재조회
-	var showAlert = setTimeout(function() {
-		socket.emit('dataFromClient', {});
+function startSocketTrns() {
+	setTimeout(function() {
+    console.log(1);
+    socket.emit('dataFromClient', {});
 	}, 1000);
 }
-
 
 $(document).ready(function() {
 	$('#sidenav-main').append(getNav1());
@@ -53,7 +49,7 @@ $(document).ready(function() {
 
 var intervalName;
 function startMonitoring() {
-	ajax('/soketStart', '', 'fnInqSocket', 'POST'); // 리슨포트 on
+	ajax('/soketStart', '', '', 'POST');
 	startSocketTrns();
 }
 
