@@ -18,7 +18,7 @@ function ajax(url, input_data, gubun, method) {
     });
 }
 
-var socket = io.connect('http://localhost:8011');  //localhost로 연결합니다.
+var socket = io.connect('http://14.63.168.58:8011');  //localhost로 연결합니다.
 
 socket.on('news', function (data) {  // 서버에서 news 이벤트가 일어날 때 데이터를 받습니다.
     console.log(data);
