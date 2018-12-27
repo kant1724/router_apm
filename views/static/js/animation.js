@@ -1,30 +1,3 @@
-
-
-var socket = io.connect('http://localhost:8011');  //localhost로 연결합니다.
-
-socket.on('news', function (data) {  // 서버에서 news 이벤트가 일어날 때 데이터를 받습니다.
-    console.log(data);
-});
-
-socket.on('inqIntervalRtn', function (data) {
-    //console.log(data);
-	var res = data['res'];
-    if ( res == "" ) {
-        //console.log("하지마");
-    } else {
-        //console.log("해");
-    	selectLogListCallback(data);
-    }
-	fnInqSocket();
-});
-
-function fnInqSocket() { // 1초후 재조회
-	var showAlert = setTimeout(function() {
-		socket.emit('inqIntervalSocket', {});
-	}, 1000);
-}
-
-
 function ajax(url, input_data, gubun, method) {
 	$.ajax(url, {
 		type: method,
@@ -45,6 +18,28 @@ function ajax(url, input_data, gubun, method) {
     });
 }
 
+var socket = io.connect('http://localhost:8011');  //localhost로 연결합니다.
+
+socket.on('news', function (data) {  // 서버에서 news 이벤트가 일어날 때 데이터를 받습니다.
+    console.log(data);
+});
+
+socket.on('dataFromServer', function (data) {
+	var res = data['res'];
+  if (res == "") {
+  } else {
+    selectLogListCallback(data);
+  }
+	startSocketTrns();
+});
+
+function startSocketTrns() { // 1초후 재조회
+	var showAlert = setTimeout(function() {
+		socket.emit('dataFromClient', {});
+	}, 1000);
+}
+
+
 $(document).ready(function() {
 	$('#sidenav-main').append(getNav1());
 	$(".button-collapse").sideNav();
@@ -59,18 +54,7 @@ $(document).ready(function() {
 var intervalName;
 function startMonitoring() {
 	ajax('/soketStart', '', 'fnInqSocket', 'POST'); // 리슨포트 on
-	fnInqSocket();
-	/*
-	var date = new Date();
-	intervalName = setInterval(function()
-	{
-		//console.log(date);
-		//selectLogList(date);
-		var seconds = date.getSeconds();
-		socket.emit('inqInterval', { "seconds": seconds });
-
-		date = new Date();
-	}, 2000);*/
+	startSocketTrns();
 }
 
 function stopMonitoring() {
