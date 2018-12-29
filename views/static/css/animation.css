@@ -11,11 +11,35 @@ table {
     color: white;
 }
 
+.status-grid {
+  position: absolute;
+  left: 500px;
+  top: 100px;
+}
+
+.each-status-bar {
+  margin-bottom: 10px;
+  height: 70px;
+  background: #003399;
+  border-radius: 5px;
+}
+
 .status-icon {
   background: green;
-  width: 200px;
-  height: 200px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
+}
+
+.status-ball {
+  display: flex;
+  align-items: center;
+  width: 200px;
+}
+
+.each-col {
+  display: flex;
+  align-items: center;
 }
 
 .status-icon:hover {
@@ -24,8 +48,6 @@ table {
 
 .router-info {
   position: relative;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
 }
 
 .middle {

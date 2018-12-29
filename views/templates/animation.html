@@ -20,20 +20,42 @@
       <div style="color: #FFFFFF; font-size: 25px; font-weight: 700;">현재 오류 라우터: <a id="error_router_cnt">0</a>건</div>
       <div style="color: #FFFFFF; font-size: 13px; font-weight: 700;">총 2건</div>
       <div style="color: #FFFFFF; font-size: 13px; font-weight: 700;">오류 발생률: <a id="error_occur_rate">0</a>%</div>
-      <div class="middle">
-        <table>
-          <tbody>
-            <td>
+      <div class="container">
+        <div class="status-grid">
+          <div class="row each-status-bar">
+            <div class="col-md-2 status-ball">
               <div id="router_1" class="status-icon text-center">
                 <div class="router-info">
                 </div>
               </div>
-            </td>
-            <td>
-                <div id="router_2" class="status-icon"></div>
-            </td>
-          </tbody>
-        </table>
+            </div>
+            <div class="col-md-2 each-col">
+              <span style="color: #FFFFFF; margin-left: 10px;">
+                active
+              </span>
+            </div>
+            <div class="col-md-5 each-col" style="width: 200px;">
+              <span style="color: #FFFFFF; margin-left: 10px;">
+                error rate: 10%;
+              </span>
+            </div>
+          </div>
+          <div class="row each-status-bar">
+            <div class="col-md-2 status-ball">
+              <div id="router_2" class="status-icon"></div>
+            </div>
+            <div class="col-md-2 each-col">
+              <span style="color: #FFFFFF; margin-left: 10px;">
+                active
+              </span>
+            </div>
+            <div class="col-md-5 each-col" style="width: 200px;">
+              <span style="color: #FFFFFF; margin-left: 10px;">
+                error rate: 10%;
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </main>
@@ -67,7 +89,7 @@
   <script type="text/javascript" src="/views/static/lib/mdb/js/bootstrap.js"></script>
   <script type="text/javascript" src="/views/static/lib/mdb/js/mdb.min.js"></script>
   <script type="text/javascript" src="/views/static/lib/moment/moment.min.js"></script>
-  <script src="/views/static/lib/socket.io/socket.io.js"></script> 
+  <script src="/views/static/lib/socket.io/socket.io.js"></script>
   <script src="/views/static/js/nav.js"></script>
   <script src="/views/static/js/animation.js"></script>
 </body>
