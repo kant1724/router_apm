@@ -11,9 +11,15 @@ table {
     color: white;
 }
 
+.dashboard-info {
+  position: absolute;
+  top: 100px;
+  left: 100px;
+}
+
 .status-grid {
   position: absolute;
-  left: 500px;
+  left: 420px;
   top: 100px;
 }
 
