@@ -12,7 +12,7 @@ function ajax(url, input_data, gubun, method) {
         },
         error: function (jqXhr, textStatus, errorMessage) {
         	if(jqXhr.status==404) {
-        		alert(textStatus);
+        			alert(textStatus);
             }
         }
     });

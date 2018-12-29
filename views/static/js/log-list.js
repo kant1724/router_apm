@@ -12,7 +12,7 @@ function ajax(url, input_data, gubun, method) {
         },
         error: function (jqXhr, textStatus, errorMessage) {
         	if(jqXhr.status==404) {
-        		alert(textStatus);
+        			alert(textStatus);
             }
         }
     });
@@ -32,7 +32,7 @@ function selectLogList() {
 function selectLogListCallback(data) {
 	var res = data['res'];
 	var d = JSON.parse(res);
-	var html = "";	
+	var html = "";
 	for (var i = 0; i < d.length; ++i) {
 			if (d[i].ip != null) {
 				html += '<tr>';
