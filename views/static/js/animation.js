@@ -31,9 +31,20 @@ socket.on('dataFromServer', function (data) {
 
 function startSocketTrns() {
 	setTimeout(function() {
-    console.log(1);
     socket.emit('dataFromClient', {});
 	}, 1000);
+}
+
+function activateTotalStatusIcon() {
+	setInterval(function() {
+		var cur = $('.total-status-icon').css('color');
+		console.log(cur);
+		if (cur == 'rgb(0, 128, 0)') {
+			$('.total-status-icon').css('color', '#C4B73B');
+		} else {
+			$('.total-status-icon').css('color', 'green');
+		}
+	}, 500);
 }
 
 $(document).ready(function() {
@@ -45,6 +56,7 @@ $(document).ready(function() {
 	});
 
 	startMonitoring();
+//	activateTotalStatusIcon();
 });
 
 var intervalName;

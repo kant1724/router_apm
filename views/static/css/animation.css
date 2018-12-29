@@ -7,20 +7,45 @@ table {
   border-spacing: 20px 20px;
 }
 
+.main {
+  margin: auto;
+}
+
 .collapse-icon {
   color: white;
 }
 
 .dashboard-info {
-  position: absolute;
+  position: relative;
   top: 100px;
-  left: 100px;
+  left: 50px;
+}
+
+.total-status {
+  position: relative;
+  top: 190px;
+  left: 50px;
+}
+
+.total-status-text {
+  position: relative;
+  top: 240px;
+  left: 120px;
+  color: #C4B73B;
+  font-size: 30px;
+  font-weight: 700;
 }
 
 .status-grid {
-  position: absolute;
-  left: 420px;
-  top: 100px;
+  position: relative;
+  display: inline-block;
+  left: 450px;
+  top: -200px;
+}
+
+.total-status-icon {
+  font-size: 200px;
+  color: green;
 }
 
 .each-status-bar {
