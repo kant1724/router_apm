@@ -79,6 +79,15 @@ function selectLogListCallback(data) {
 	var d = JSON.parse(res);
 	$('#current_time').text(getCurrentTime());
 	if (d.length == 0) return;
+	var log = d[0].log;
+	var re = /<[0-2][0-9][0-9]>/g;
+	var num = log.match(re);
+	if (num != null) {
+		num = Number(num.substring(1, 4));
+		var facility = num >> 3;
+		var status = num - facility;
+	}
+	console.log(num);
 	if (d[0].log == "ok") {
 		$('#router_1').css('background', 'green');
 		$('#error_router_cnt').text(0);
