@@ -85,7 +85,7 @@ function selectLogListCallback(data) {
 	if (num != null) {
 		num = Number(num.substring(1, 4));
 		var facility = num >> 3;
-		var status = num - facility;
+		var status = num - (facility << 3);
 	}
 	console.log(num);
 	if (d[0].log == "ok") {
