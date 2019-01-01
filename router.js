@@ -15,10 +15,6 @@ module.exports = function(app) {
 		res.render('views/templates/animation.html');
 	});
 
-	app.get('/deviceAdmin', function(req, res) {
-		res.render('views/templates/deviceAdmin.html');
-	});
-
 
 	app.post('/soketStart', function(req, res) {
 		var ret = require('./server/log-list').soketStart(
