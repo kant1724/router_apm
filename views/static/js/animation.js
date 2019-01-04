@@ -74,6 +74,28 @@ function selectLogList(date) {
 	ajax('/selectLogListAfterSeconds', {"seconds" : seconds}, 'selectLogList', 'POST');
 }
 
+var statusColor = {
+	0 : 'gray',
+	1 : '#FFC19E',
+	2 : '#99004C',
+	3 : 'red',
+	4 : '#FAED7D',
+	5 : '#B2CCFF',
+  6 : '#FFD9EC',
+	7 : 'green'
+};
+
+var statusName = {
+	0 : 'Emergency',
+	1 : 'Alert',
+	2 : 'Critical',
+	3 : 'Error',
+	4 : 'Warning',
+	5 : 'Notice',
+  6 : 'Informational',
+	7 : 'Debug'
+}
+
 function selectLogListCallback(data) {
 	var res = data['res'];
 	var d = JSON.parse(res);
@@ -87,15 +109,13 @@ function selectLogListCallback(data) {
 		var facility = num >> 3;
 		var status = num - (facility << 3);
 	}
-	if (d[0].log == "ok") {
-		$('#router_1').css('background', 'green');
-		$('#error_router_cnt').text(0);
-		$('#error_occur_rate').text(0);
-	} else {
-		$('#router_1').css('background', 'red');
-		$('#error_router_cnt').text(1);
-		$('#error_occur_rate').text(50);
-	}
+	var color = statusColor[status];
+	var name = statusName[status];
+	$('#router_1').css('background', color);
+	$('#error_router_cnt').text(0);
+	$('#error_occur_rate').text(0);
+	$('#status').text(name);
+
 	var obj = $('#log_list_row').children();
 	if (obj.length >= 5) {
 		$(obj[0]).remove();
