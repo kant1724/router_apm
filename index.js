@@ -13,4 +13,5 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 var server = app.listen(3000, function() {
 	console.log("server is running...");
+	require('./server/background').getLog();
 });

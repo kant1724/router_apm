@@ -56,17 +56,11 @@ $(document).ready(function() {
 	});
 
 	startMonitoring();
-//	activateTotalStatusIcon();
 });
 
-var intervalName;
 function startMonitoring() {
 	ajax('/soketStart', '', '', 'POST');
 	startSocketTrns();
-}
-
-function stopMonitoring() {
-	clearInterval(intervalName);
 }
 
 function selectLogList(date) {
