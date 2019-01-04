@@ -1,19 +1,14 @@
-var memjs = require('memjs');
-var mc = memjs.Client.create('14.63.168.58:11211', {
-  username: 'aa',
-  password: 'aa'
-});
+var cache = require('memory-cache');
 
 module.exports = {
   getLog: function() {
     setInterval(function() {
       require('./log-list').selectLogListFromBackground(function(result) {
-        mc.set('foo', 'bar', 10);
-        mc.get('foo', function (err, value, key) {
-          console.log(value);
+        cache.put('houdini', 'disappear', 1000, function(key, value) {
         });
-        console.log(result);
-      });
+        setTimeout(function() {
+            console.log('Houdini is ' + cache.get('houdini'));
+        }, 200);});
     }, 1000);
   }
 }
