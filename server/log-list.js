@@ -2,8 +2,13 @@ var moment = require('moment');
 var background = require('./background');
 
 var intervalName;
-var MongoClient = require('mongodb').MongoClient;
-
+var mysql = require('mysql');
+var connection = mysql.createConnection({
+  host     : '14.63.168.58',
+  user     : 'chatbot',
+  password : 'chatbot',
+  database : 'router_apm'
+});
 
 var io = require('socket.io').listen(8011);
 var gvSocket;
@@ -12,38 +17,16 @@ var gvIsConnect = false;
 
 var url = "mongodb://14.63.168.58:27017/";
 module.exports = {
-  connect: function(callback) {
-    MongoClient.connect(url, function(err, db) {
-      if (err) throw err;
-      var dbo = db.db("router_log");
-      dbo.collection("router_log").find({}).limit(10).toArray(function(err, result) {
-        if (err) throw err;
-        console.log(result);
-        db.close();
-        callback(result);
-      });
+  insertLogHistory: function() {
+    connection.connect();
+    connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
+      if (error) throw error;
+      console.log('The solution is: ', results[0].solution);
     });
-  },
+    connection.end();
+  }
 
-  selectLogListFromBackground: function(callback) {
-    MongoClient.connect(url, function(err, db) {
-      if (err) throw err;
-      var dbo = db.db("router_log");
-      var g = moment().format();
-      var today = g.substring(0, 10);
-      var hour = g.substring(11, 13);
-      var minute = g.substring(14, 16);
-      dbo.collection("router_log").find({
-        $and:[{"date" : today, "hour" : hour, "minute" : minute}]
-      }).sort({$natural : -1}).limit(1).toArray(function(err, result) {
-        if (err) throw err;
-        db.close();
-        callback(result);
-      });
-    });
-  },
-
-  soketStart: function(callback, seconds) {
+  socketStart: function(callback, seconds) {
     io.sockets.on('connection', function (socket) {
   		if (gvIsConnect) {
         return;

@@ -20,8 +20,6 @@
     "fs-extra": "^6.0.0",
     "memory-cache": "^0.2.0",
     "moment": "^2.23.0",
-    "mongodb": "^3.1.10",
-    "mongoose": "^5.4.0",
     "mysql": "^2.15.0",
     "nodejs-websocket": "^1.7.2",
     "socket.io": "^2.2.0",

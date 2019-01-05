@@ -54,7 +54,7 @@ $(document).ready(function() {
 });
 
 function startMonitoring() {
-	ajax('/soketStart', '', '', 'POST');
+	ajax('/socketStart', '', '', 'POST');
 	startSocketTrns();
 }
 
