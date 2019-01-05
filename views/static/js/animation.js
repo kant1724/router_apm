@@ -18,7 +18,7 @@ function ajax(url, input_data, gubun, method) {
     });
 }
 
-var socket = io.connect('http://14.63.168.58:8011');
+var socket = io.connect('http://127.0.0.1:8011');
 
 socket.on('dataFromServer', function (data) {
 	var res = data['res'];
@@ -85,11 +85,11 @@ var statusName = {
 
 function selectLogListCallback(data) {
 	var res = data['res'];
-	console.log(res);
 	var d = JSON.parse(res);
 	$('#current_time').text(getCurrentTime());
-	if (d.length == 0) return;
-	setStatus(d[d.length - 1]);
+	if (d == null) return;
+	setStatus(d);
+	sleep(1000);
 	startSocketTrns();
 }
 

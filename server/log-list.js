@@ -77,8 +77,7 @@ module.exports = {
 				var hour    = g.substring(11, 13);
 				var minute  = g.substring(14, 16);
 				var seconds = g.substring(17, 19);
-        console.log(today);
-        var res = background.getLogByKey();
+        var res = background.getLogByKey(hour, minute);
         socket.emit('dataFromServer', {res: JSON.stringify(res)});
       });
       socket.on('disconnect', function() {
