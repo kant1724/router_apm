@@ -1,0 +1,22 @@
+body {
+	margin: 0;
+	background: white;
+}
+
+#main {
+	position: relative;
+	left: 300px;
+	top: 100px;
+	width: 70%;
+}
+
+.log-list-title {
+	width: 100%;
+	margin-top: 20px;
+	border-bottom: 1px solid #333;
+}
+
+.log-list-content {
+	width: 100%;
+	margin-top: 20px;
+}

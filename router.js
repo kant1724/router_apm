@@ -15,6 +15,10 @@ module.exports = function(app) {
 		res.render('views/templates/animation.html');
 	});
 
+	app.get('/status-chart', function(req, res) {
+		res.render('views/templates/status-chart.html');
+	});
+
 	app.post('/soketStart', function(req, res) {
 		var ret = require('./server/log-list').soketStart(
 			function callback(ret) {
