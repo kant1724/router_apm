@@ -23,17 +23,11 @@ var socket = io.connect('http://14.63.168.58:8011');
 socket.on('dataFromServer', function (data) {
 	var res = data['res'];
   if (res == "") {
+		startSocketTrns();
   } else {
     selectLogListCallback(data);
   }
-	startSocketTrns();
 });
-
-function startSocketTrns() {
-	setTimeout(function() {
-    socket.emit('dataFromClient', {});
-	}, 1000);
-}
 
 function activateTotalStatusIcon() {
 	setInterval(function() {
@@ -61,6 +55,10 @@ $(document).ready(function() {
 function startMonitoring() {
 	ajax('/soketStart', '', '', 'POST');
 	startSocketTrns();
+}
+
+function startSocketTrns() {
+  socket.emit('dataFromClient', {});
 }
 
 function selectLogList(date) {
@@ -95,7 +93,20 @@ function selectLogListCallback(data) {
 	var d = JSON.parse(res);
 	$('#current_time').text(getCurrentTime());
 	if (d.length == 0) return;
-	var log = d[0].log;
+	for (var i = 0; i < d.length; ++i) {
+		setStatus(d[i]);
+		sleep(1000);
+	}
+	startSocketTrns();
+}
+
+function sleep(delay) {
+   var start = new Date().getTime();
+   while (new Date().getTime() < start + delay);
+}
+
+function setStatus(d) {
+	var log = d.log;
 	var re = /<[0-2][0-9][0-9]>/g;
 	var num = log.match(re)[0];
 	if (num != null) {
@@ -114,11 +125,12 @@ function selectLogListCallback(data) {
 	if (obj.length >= 5) {
 		$(obj[0]).remove();
 	}
+
 	var html = '<div class="col-7">';
-	 	  html += d[0].ip + ' ';
-			html += d[0].date + ' ';
-			html += d[0].hour + ':' + d[0].minute + ':' + d[0].seconds + ' ';
-			html += d[0].log;
+			html += d.ip + ' ';
+			html += d.date + ' ';
+			html += d.hour + ':' + d.minute + ':' + d.seconds + ' ';
+			html += d.log;
 			html += '</div>';
 	$('#log_list_row').append(html);
 }

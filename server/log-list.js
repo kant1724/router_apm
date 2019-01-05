@@ -1,4 +1,5 @@
 var moment = require('moment');
+var background = require('./background');
 
 var intervalName;
 var MongoClient = require('mongodb').MongoClient;
@@ -52,7 +53,6 @@ module.exports = {
       var today = g.substring(0, 10);
       var hour = g.substring(11, 13);
       var minute = g.substring(14, 16);
-      console.log(g + " " + today + " " + hour + " " + minute);
       dbo.collection("router_log").find({
         $and:[{"date" : today, "hour" : hour, "minute" : minute}]
       }).sort({$natural : -1}).limit(1).toArray(function(err, result) {
@@ -81,13 +81,9 @@ module.exports = {
   				if (gvSavTime == today + hour + minute + seconds + "") {
   					socket.emit('dataFromServer', {res: ""} );
   				} else {
-  					gvSavTime = today + hour + minute + seconds + "";
-  					dbo.collection("router_log").find({
-  						$and:[{"date" : today, "hour" : hour}]
-  					}).sort({$natural : -1}).limit(1).toArray(function(err, result) {
-  					  if (err) throw err;
-  						socket.emit('dataFromServer', {res: JSON.stringify(result)});
-  					});
+            var res = background.getLogByKey();
+            console.log(res);
+            socket.emit('dataFromServer', {res: JSON.stringify(res)});
   				}
   			});
       });
