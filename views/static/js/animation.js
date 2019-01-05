@@ -95,12 +95,7 @@ function selectLogListCallback(data) {
 	setStatus(d);
 	setInterval(function() {
 		startSocketTrns();
-	}, 1000);	
-}
-
-function sleep(delay) {
-   var start = new Date().getTime();
-   while (new Date().getTime() < start + delay);
+	}, 1000);
 }
 
 function setStatus(d) {
