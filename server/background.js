@@ -1,5 +1,31 @@
 var moment = require('moment');
 var cache = require('memory-cache');
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+module.exports = {
+  getLog: function() {
+    setInterval(function() {
+      var g = moment().format();
+      var data = {};
+      data.today   = g.substring(0, 10);
+      data.hour    = g.substring(11, 13);
+      data.minute  = g.substring(14, 16);
+      data.seconds = g.substring(17, 19);
+      data.log = realLogs[getRandomInt(0, realLogs.length)];
+      data.ip = '127.0.0.1';
+      //console.log(data);
+      cache.put(data.hour + data.minute, data, 600000, function(key, value) {});
+    }, 1000);
+  },
+
+  getLogByKey: function(hour, minute) {
+    return cache.get(hour + minute);
+  }
+}
+
 var realLogs =
       [ "<188>704: Feb 13 20:56:50 KST:%CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on FastEthernet0/12 (not half duplex), with Dreamport FastEthernet0/0 (half duplex)."
      , "<188>735: Feb 13 21:06:07 KST:%CDP-4-DUPLEX_MISMATCH: duplex mismatch discovered on FastEthernet0/12 (not half duplex), with Dreamport FastEthernet0/1 (half duplex)."
@@ -161,28 +187,3 @@ var realLogs =
      , "<190>998392: *Feb  3 17:21:13KST: %SYS-6-LOGGINGHOST_STARTSTOP: Logging to host 222.122.122.251 port 514 stopped - CLI initiated"
      , "<190>511: 43w2d: %SYS-6-CLOCKUPDATE: System clock has been updated from 21:47:20 UTC Wed Dec 29 1993 to 11:20:00 UTC Fri Mar 2 2012, configured from console by vty0 (192.168.3.1)."
 ];
-
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
-}
-
-module.exports = {
-  getLog: function() {
-    setInterval(function() {
-      var g = moment().format();
-      var data = {};
-      data.today   = g.substring(0, 10);
-      data.hour    = g.substring(11, 13);
-      data.minute  = g.substring(14, 16);
-      data.seconds = g.substring(17, 19);
-      data.log = realLogs[getRandomInt(0, realLogs.length)];
-      data.ip = '127.0.0.1';
-      //console.log(data);
-      cache.put(data.hour + data.minute, data, 600000, function(key, value) {});
-    }, 1000);
-  },
-
-  getLogByKey: function(hour, minute) {
-    return cache.get(hour + minute);
-  }
-}
