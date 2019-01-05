@@ -15,7 +15,6 @@ module.exports = function(app) {
 		res.render('views/templates/animation.html');
 	});
 
-
 	app.post('/soketStart', function(req, res) {
 		var ret = require('./server/log-list').soketStart(
 			function callback(ret) {
