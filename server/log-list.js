@@ -24,7 +24,7 @@ module.exports = {
       console.log('The solution is: ', results[0].solution);
     });
     connection.end();
-  }
+  },
 
   socketStart: function(callback, seconds) {
     io.sockets.on('connection', function (socket) {
