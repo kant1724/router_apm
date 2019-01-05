@@ -93,10 +93,7 @@ function selectLogListCallback(data) {
 	var d = JSON.parse(res);
 	$('#current_time').text(getCurrentTime());
 	if (d.length == 0) return;
-	for (var i = 0; i < d.length; ++i) {
-		setStatus(d[i]);
-		sleep(1000);
-	}
+	setStatus(d[d.length - 1]);
 	startSocketTrns();
 }
 
@@ -125,13 +122,13 @@ function setStatus(d) {
 	if (obj.length >= 5) {
 		$(obj[0]).remove();
 	}
-
 	var html = '<div class="col-7">';
 			html += d.ip + ' ';
 			html += d.date + ' ';
 			html += d.hour + ':' + d.minute + ':' + d.seconds + ' ';
 			html += d.log;
 			html += '</div>';
+	console.log(html);
 	$('#log_list_row').append(html);
 }
 
