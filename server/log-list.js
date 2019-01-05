@@ -15,7 +15,6 @@ var gvSocket;
 var gvSavTime;
 var gvIsConnect = false;
 
-var url = "mongodb://14.63.168.58:27017/";
 module.exports = {
   insertLogHistory: function() {
     connection.connect();
