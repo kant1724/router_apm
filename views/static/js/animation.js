@@ -93,8 +93,9 @@ function selectLogListCallback(data) {
 			return;
 	};
 	setStatus(d);
-	sleep(1000);
-	startSocketTrns();
+	setInterval(function() {
+		startSocketTrns();
+	}, 1000);	
 }
 
 function sleep(delay) {
