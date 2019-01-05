@@ -20,31 +20,7 @@ function ajax(url, input_data, gubun, method) {
 
 $(document).ready(function() {
 	$('#sidenav-main').append(getNav1());
-	$(".button-collapse").sideNav();
-
-	var ctxL = document.getElementById("lineChart").getContext('2d');
-	
-	var myLineChart = new Chart(ctxL, {
-		type: 'line',
-		data: {
-		 labels: ["12:00", "12:01", "12:02", "12:03", "12:04", "12:05", "12:06"],
-		 datasets: [{
-				 label: "상태값",
-				 data: [1, 5, 4, 7, 0, 3, 4],
-				 backgroundColor: [
-					 'transparent',
-				 ],
-				 borderColor: [
-					 'rgba(200, 99, 132, .7)',
-				 ],
-				 borderWidth: 2,
-				 lineTension: 0
-			 }
-		 ]
-		},
-		options: {
-	  }
-	});
+	$(".button-collapse").sideNav();	
 });
 
 function selectLogList() {
