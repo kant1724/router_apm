@@ -25,26 +25,6 @@ module.exports = {
     });
   },
 
-  selectLogListAfterSeconds: function(callback, seconds) {
-    MongoClient.connect(url, function(err, db) {
-      if (err) throw err;
-      var dbo = db.db("router_log");
-      var g = moment().format();
-      var today = g.substring(0, 10);
-      var hour = g.substring(11, 13);
-      var minute = g.substring(14, 16);
-      console.log(g + " " + today + " " + hour + " " + minute);
-      dbo.collection("router_log").find({
-        $and:[{"date" : today, "hour" : hour, "minute" : minute}]
-      }).sort({$natural : -1}).limit(1).toArray(function(err, result) {
-        if (err) throw err;
-        console.log(result);
-        db.close();
-        callback(result);
-      });
-    });
-  },
-
   selectLogListFromBackground: function(callback) {
     MongoClient.connect(url, function(err, db) {
       if (err) throw err;
