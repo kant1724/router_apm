@@ -9,6 +9,7 @@ var connection = mysql.createConnection({
   password : 'chatbot',
   database : 'router_apm'
 });
+connection.connect();
 
 var io = require('socket.io').listen(8011);
 var gvSocket;
@@ -16,13 +17,10 @@ var gvSavTime;
 var gvIsConnect = false;
 
 module.exports = {
-  insertLogHistory: function() {
-    connection.connect();
-    connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
-      if (error) throw error;
-      console.log('The solution is: ', results[0].solution);
+  insertStatusHistory: function(today, hour, minute, seconds, facilityId, statusCd) {
+    var sql = 'INSERT INTO STATUS_HISTORY VALUES (' + facilityId + ',' + statusCd + ',' + today + ',' + hour + ',' + minute + ',' + seconds + ')';
+    connection.query(sql, function (error, results, fields) {
     });
-    connection.end();
   },
 
   socketStart: function(callback, seconds) {

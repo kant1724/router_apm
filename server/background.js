@@ -1,6 +1,7 @@
 var moment = require('moment');
 var cache = require('memory-cache');
-var prevStatus = 0;
+var log_list = require('./log-list');
+var prevStatusCd = 0;
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
@@ -14,7 +15,7 @@ function getStatus(log) {
     var facility = num >> 3;
     var status = num - (facility << 3);
 	}
-  return status
+  return [facility, status];
 }
 
 module.exports = {
@@ -31,11 +32,13 @@ module.exports = {
       //console.log(data);
       cache.put(data.hour + data.minute, data, 600000, function(key, value) {});
 
-      var status = getStatus(data.log);
-      if (status != prevStatus) {
-
+      var s = getStatus(data.log);
+      var statusCd = s[1];
+      if (statusCd != prevStatusCd) {
+        var facilityId = s[0];
+        //log_list.insertStatusHistory(data.today, data.hour, data.minute, data.seconds, facilityId, statusCd);
       }
-      prevStatus = status;
+      prevStatusCd = statusCd;
     }, 1000);
   },
 
