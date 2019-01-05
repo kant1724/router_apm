@@ -64,28 +64,22 @@ module.exports = {
   },
 
   soketStart: function(callback, seconds) {
-  	io.sockets.on('connection', function (socket) {
-  		if (gvIsConnect) return;
+    io.sockets.on('connection', function (socket) {
+  		if (gvIsConnect) {
+        return;
+      }
   		gvIsConnect = true;
   		gvSocket = socket;
   		console.log('server running at 8011 port');
-  	  MongoClient.connect(url, function(err, db) {
-  			if (err) throw err;
-  			var dbo = db.db("router_log");
-  			socket.on('dataFromClient', function (data) {
-  				var g = moment().format();
-  				var today   = g.substring( 0, 10);
-  				var hour    = g.substring(11, 13);
-  				var minute  = g.substring(14, 16);
-  				var seconds = g.substring(17, 19);
-  				if (gvSavTime == today + hour + minute + seconds + "") {
-  					socket.emit('dataFromServer', {res: ""} );
-  				} else {
-            var res = background.getLogByKey();
-            console.log(res);
-            socket.emit('dataFromServer', {res: JSON.stringify(res)});
-  				}
-  			});
+  	  socket.on('dataFromClient', function (data) {
+				var g = moment().format();
+				var today   = g.substring( 0, 10);
+				var hour    = g.substring(11, 13);
+				var minute  = g.substring(14, 16);
+				var seconds = g.substring(17, 19);
+        console.log(today);
+        var res = background.getLogByKey();
+        socket.emit('dataFromServer', {res: JSON.stringify(res)});
       });
       socket.on('disconnect', function() {
       	console.log("disconnect");

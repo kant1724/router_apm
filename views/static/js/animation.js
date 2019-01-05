@@ -61,11 +61,6 @@ function startSocketTrns() {
   socket.emit('dataFromClient', {});
 }
 
-function selectLogList(date) {
-	var seconds = date.getSeconds();
-	ajax('/selectLogListAfterSeconds', {"seconds" : seconds}, 'selectLogList', 'POST');
-}
-
 var statusColor = {
 	0 : 'gray',
 	1 : '#FFC19E',
@@ -90,6 +85,7 @@ var statusName = {
 
 function selectLogListCallback(data) {
 	var res = data['res'];
+	console.log(res);
 	var d = JSON.parse(res);
 	$('#current_time').text(getCurrentTime());
 	if (d.length == 0) return;
@@ -128,7 +124,6 @@ function setStatus(d) {
 			html += d.hour + ':' + d.minute + ':' + d.seconds + ' ';
 			html += d.log;
 			html += '</div>';
-	console.log(html);
 	$('#log_list_row').append(html);
 }
 
