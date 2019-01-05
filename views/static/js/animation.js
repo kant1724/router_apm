@@ -23,6 +23,7 @@ var socket = io.connect('http://127.0.0.1:8011');
 socket.on('dataFromServer', function (data) {
 	var res = data['res'];
   if (res == "") {
+		console.log("no return");
 		startSocketTrns();
   } else {
     selectLogListCallback(data);
@@ -87,7 +88,10 @@ function selectLogListCallback(data) {
 	var res = data['res'];
 	var d = JSON.parse(res);
 	$('#current_time').text(getCurrentTime());
-	if (d == null) return;
+	if (d == null) {
+			startSocketTrns();
+			return;
+	};
 	setStatus(d);
 	sleep(1000);
 	startSocketTrns();
