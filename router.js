@@ -19,8 +19,12 @@ module.exports = function(app) {
 		res.render('views/templates/status-history.html');
 	});
 
-	app.post('/soketStart', function(req, res) {
-		var ret = require('./server/log-list').soketStart(
+	app.get('/terminal', function(req, res) {
+		res.render('views/templates/terminal.html');
+	});
+
+	app.post('/socketStart', function(req, res) {
+		var ret = require('./server/log-list').socketStart(
 			function callback(ret) {
 				res.status(200).send({res: JSON.stringify(ret)});
 			});
