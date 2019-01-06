@@ -33,7 +33,7 @@ module.exports = {
   		console.log('server running at 8011 port');
   	  socket.on('dataFromClient', function (data) {
 				var g = moment().format();
-				var today   = g.substring( 0, 10);
+				var today   = g.substring(0, 10);
 				var hour    = g.substring(11, 13);
 				var minute  = g.substring(14, 16);
 				var seconds = g.substring(17, 19);
