@@ -1,28 +1,12 @@
 var moment = require('moment');
 var background = require('./background');
 
-var intervalName;
-var mysql = require('mysql');
-var connection = mysql.createConnection({
-  host     : '14.63.168.58',
-  user     : 'chatbot',
-  password : 'chatbot',
-  database : 'router_apm'
-});
-connection.connect();
-
 var io = require('socket.io').listen(8011);
 var gvSocket;
 var gvSavTime;
 var gvIsConnect = false;
 
 module.exports = {
-  insertStatusHistory: function(today, hour, minute, seconds, facilityId, statusCd) {
-    var sql = 'INSERT INTO STATUS_HISTORY VALUES (' + facilityId + ',' + statusCd + ',' + today + ',' + hour + ',' + minute + ',' + seconds + ')';
-    connection.query(sql, function (error, results, fields) {
-    });
-  },
-
   socketStart: function(callback, seconds) {
     io.sockets.on('connection', function (socket) {
   		if (gvIsConnect) {
