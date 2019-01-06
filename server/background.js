@@ -1,5 +1,6 @@
 var moment = require('moment');
 var cache = require('memory-cache');
+var status_history = require('./status-history');
 var prevStatusCd = 0;
 
 function getRandomInt(min, max) {
