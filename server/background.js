@@ -1,8 +1,21 @@
 var moment = require('moment');
 var cache = require('memory-cache');
+var status_history = require('./status-history');
+var prevStatusCd = 0;
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function getStatus(log) {
+  var re = /<[0-2][0-9][0-9]>/g;
+	var num = log.match(re)[0];
+	if (num != null) {
+		num = Number(num.substring(1, 4));
+    var facility = num >> 3;
+    var status = num - (facility << 3);
+	}
+  return [facility, status];
 }
 
 module.exports = {
@@ -18,6 +31,14 @@ module.exports = {
       data.ip = '127.0.0.1';
       //console.log(data);
       cache.put(data.hour + data.minute, data, 600000, function(key, value) {});
+
+      var s = getStatus(data.log);
+      var statusCd = s[1];
+      if (statusCd != prevStatusCd) {
+        var facilityId = s[0];
+        //log_list.insertStatusHistory(data.today, data.hour, data.minute, data.seconds, facilityId, statusCd);
+      }
+      prevStatusCd = statusCd;
     }, 1000);
   },
 
