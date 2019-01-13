@@ -9,9 +9,10 @@
   <link rel="stylesheet" href="/views/static/lib/fontawesome-pro/css/all.min.css">
   <link rel="stylesheet" href="/views/static/lib/mdb/css/bootstrap.min.css">
   <link rel="stylesheet" href="/views/static/lib/mdb/css/mdb.min.css">
-  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.css" />
-  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css" />
+  <link rel="stylesheet" href="/views/static/lib/jsgrid/jsgrid.min.css">
+  <link rel="stylesheet" href="/views/static/lib/jsgrid/jsgrid-theme.min.css">
 </head>
+
 <body class="fixed-sn white-skin">
   <header>
     <nav id="sidenav-main">
@@ -19,10 +20,33 @@
   </header>
   <main>
 
-      <div id="current_time" style="color: #000000; font-size: 15px; font-weight: 700;">2018-12-23 12:00:01</div>
-    <div id="jsGrid"></div>
+    <div id="current_time">YYYY-MM-DD HH:MM:SS</div>
 
-	</main>
+    <div class="containter">
+      <div class="row">
+        <div class="form-check col">
+          <input type="checkbox" class="form-check-input" id="chkScrollLock">
+          <label class="form-check-label" for="chkScrollLock">스크롤 멈춤</label>
+        </div>
+        <div class="form-check col">
+          <input type="checkbox" class="form-check-input" id="chkLogLock">
+          <label class="form-check-label" for="chkLogLock">로그 멈춤</label>
+        </div>
+        <div class="col">
+          <button type="button" class="btn btn-primary btn-sm col" id="btnClear">지우기</button>
+        </div>
+        <div class="col">
+          <div class="md-form mt-0">
+            <input type="text" id="txtMaxLine" class="form-control">
+            <label for="txtMaxLine">저장</label>
+          </div>
+        </div>
+      </div>
+      <div class="h-100">
+        <div id="jsGrid"></div>
+      </div>
+
+  </main>
 
 
 
